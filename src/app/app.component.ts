@@ -10,7 +10,7 @@ import { map, startWith } from "rxjs/operators";
 })
 export class AppComponent {
   public form: FormGroup;
-  public options = ["Paris", "Nice", "Nîmes"];
+  public options = ["Paris", "Nice", "Nimes"];
   public filteredOptions: Observable<string[]>;
 
   constructor(private fb: FormBuilder) {}
