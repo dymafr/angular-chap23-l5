@@ -1,18 +1,18 @@
-import "./polyfills";
+import 'zone.js'; // Nécessaire uniquement pour Stackblitz
 
-import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import { AppModule } from "./app/app.module";
+import { AppModule } from './app/app.module';
 
 platformBrowserDynamic()
   .bootstrapModule(AppModule)
-  .then(ref => {
+  .then((ref) => {
     // Ensure Angular destroys itself on hot reloads.
-    if (window["ngRef"]) {
-      window["ngRef"].destroy();
+    if (window['ngRef']) {
+      window['ngRef'].destroy();
     }
-    window["ngRef"] = ref;
+    window['ngRef'] = ref;
 
     // Otherwise, log the boot error
   })
-  .catch(err => console.error(err));
+  .catch((err) => console.error(err));
