@@ -1,71 +1,76 @@
 <form [formGroup]="form" class="container">
-	<div>
-		<mat-form-field floatLabel="always">
-			<mat-label>Name</mat-label>
-			<input matInput type="text" formControlName="input" />
-			<mat-icon matSuffix>perm_identity</mat-icon>
-			<mat-hint align="end">{{form.get('input').value?.length}}/10</mat-hint>
-			<mat-error *ngIf="form.get('input').invalid">Le champ est obligatoire</mat-error>
-		</mat-form-field>
-	</div>
-	<div>
-		<mat-checkbox formControlName="majeur">Majeur</mat-checkbox>
-	</div>
-	<div>
-		<mat-radio-group formControlName="gender">
-			<mat-radio-button value="femme">Femme</mat-radio-button>
-			<mat-radio-button value="homme">Homme</mat-radio-button>
-		</mat-radio-group>
-	</div>
-	<div>
-		<mat-slide-toggle formControlName="toggle">Majeur</mat-slide-toggle>
-	</div>
-	<div>
-		<mat-form-field>
-			<mat-select placeholder='Nourriture' formControlName="select">
-				<mat-option value="pain">Pain</mat-option>
-				<mat-option value="pate">Pain</mat-option>
-				<mat-option value="pizza">Pizza</mat-option>
-			</mat-select>
-		</mat-form-field>
-	</div>
-	<div>
-		<mat-slider formControlName="slider" min="0" max="10"></mat-slider>
-	</div>
-	<div>
-		<mat-form-field>
-			<input matInput [matDatepicker]="picker" formControlName="date">
-			<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-			<mat-datepicker #picker></mat-datepicker>
-		</mat-form-field>
-	</div>
+  <div>
+    <mat-form-field floatLabel="always">
+      <mat-label>Name</mat-label>
+      <input #champ matInput type="text" formControlName="input" />
+      <mat-icon matSuffix>perm_identity</mat-icon>
+      <mat-hint align="end">{{ champ.value.length }}/10</mat-hint>
+      <mat-error *ngIf="form.get('input').invalid"
+        >Le champ est obligatoire</mat-error
+      >
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-checkbox formControlName="majeur">Majeur</mat-checkbox>
+  </div>
+  <div>
+    <mat-radio-group formControlName="gender">
+      <mat-radio-button value="femme">Femme</mat-radio-button>
+      <mat-radio-button value="homme">Homme</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <div>
+    <mat-slide-toggle formControlName="toggle">Majeur</mat-slide-toggle>
+  </div>
+  <div>
+    <mat-form-field>
+      <mat-select placeholder="Nourriture" formControlName="select">
+        <mat-option value="pain">Pain</mat-option>
+        <mat-option value="pate">Pain</mat-option>
+        <mat-option value="pizza">Pizza</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-slider formControlName="slider" min="0" max="10"></mat-slider>
+  </div>
+  <div>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" formControlName="date" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
 
-	<div>
-		<mat-form-field>
-			<mat-date-range-input [rangePicker]="range">
-				<input matStartDate formControlName="start">
-				<input matEndDate formControlName="end">
-			</mat-date-range-input>
-				<mat-datepicker-toggle matSuffix [for]="range"></mat-datepicker-toggle>
-				<mat-date-range-picker #range></mat-date-range-picker>
-		</mat-form-field>
-	</div>
-	<div>
-		<mat-form-field>
-			<input
-      type="text"
-      placeholder="Choisissez votre ville"
-      aria-label="Text"
-      matInput
-      [matAutocomplete]="auto"
-      formControlName="autocomplete"
-    />
-			<mat-autocomplete #auto>
-				<mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-					{{ option }}
-				</mat-option>
-			</mat-autocomplete>
-		</mat-form-field>
-	</div>
-	<pre>{{form.value | json}}</pre>
+  <div>
+    <mat-form-field>
+      <mat-date-range-input [rangePicker]="range">
+        <input matStartDate formControlName="start" />
+        <input matEndDate formControlName="end" />
+      </mat-date-range-input>
+      <mat-datepicker-toggle matSuffix [for]="range"></mat-datepicker-toggle>
+      <mat-date-range-picker #range></mat-date-range-picker>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <input
+        type="text"
+        placeholder="Choisissez votre ville"
+        aria-label="Text"
+        matInput
+        [matAutocomplete]="auto"
+        formControlName="autocomplete"
+      />
+      <mat-autocomplete #auto>
+        <mat-option
+          *ngFor="let option of filteredOptions | async"
+          [value]="option"
+        >
+          {{ option }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+  <pre>{{ form.value | json }}</pre>
 </form>
