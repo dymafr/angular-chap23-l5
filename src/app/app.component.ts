@@ -24,7 +24,7 @@ export class AppComponent {
 
   public options = ['Paris', 'Nice', 'Nimes'];
   public filteredOptions: Observable<string[]> = this.form
-    .get('autocomplete')
+    .get('autocomplete')!
     .valueChanges.pipe(
       startWith(''),
       map((value: string) =>
